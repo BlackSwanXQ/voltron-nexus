@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  kafka:
+    bootstrap-servers: kafka-broker:9092
+    consumer:
+      group-id: grid-monitor-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+
+kafka:
+  topic:
+    current-measurements: current-measurements
