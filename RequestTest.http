@@ -1,0 +1,21 @@
+### Send calculation request
+POST http://localhost:8080/api/calculate
+Content-Type: application/json
+
+### 1. Health check
+GET http://localhost:8081/api/health
+
+### 2. Полное состояние системы
+GET http://localhost:8081/api/state
+
+### 3. Все линии
+GET http://localhost:8081/api/lines
+
+### 4. Конкретная линия (замени {lineId})
+GET http://localhost:8081/api/lines/L6
+
+### 5. Все выключатели
+GET http://localhost:8081/api/switches
+
+### 6. Конкретный выключатель (замени {switchId})
+GET http://localhost:8081/api/switches/switch_1

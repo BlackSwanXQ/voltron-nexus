@@ -22,24 +22,28 @@ public class MonitoringController {
     // 1. Получить полное состояние системы
     @GetMapping("/state")
     public GridState getFullState() {
+
         return gridStateService.getCurrentState();
     }
 
     // 2. Получить все линии
     @GetMapping("/lines")
     public Map<String, LineCurrent> getAllLines() {
+
         return gridStateService.getCurrentState().getLineStates();
     }
 
     // 3. Получить конкретную линию по ID
     @GetMapping("/lines/{lineId}")
     public LineCurrent getLine(@PathVariable String lineId) {
+
         return gridStateService.getLineCurrent(lineId);
     }
 
     // 4. Получить все выключатели
     @GetMapping("/switches")
     public Map<String, SwitchCurrent> getAllSwitches() {
+
         return gridStateService.getCurrentState().getSwitchStates();
     }
 
@@ -52,6 +56,7 @@ public class MonitoringController {
     // 6. Простой health check
     @GetMapping("/health")
     public String health() {
+
         return "Grid Monitor is working!";
     }
 }

@@ -1,16 +1,82 @@
+#server:
+#  port: 8081
+#
+#spring:
+#  kafka:
+#    bootstrap-servers: kafka-broker:9092
+#    consumer:
+#      group-id: grid-monitor-group
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      properties:
+#        spring.json.trusted.packages: '*'
+#
+#kafka:
+#  topic:
+#    current-measurements: current-measurements
+
+
+#server:
+#  port: 8081
+#
+#spring:
+#  kafka:
+#    bootstrap-servers: localhost:29092,localhost:29093,localhost:29094
+#    consumer:
+#      group-id: grid-monitor-group
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#
+#kafka:
+#  topics:
+#    current-measurements: current-measurements
+#
+#
+#
+#config:
+#  anomaly:
+#    threshold:
+#      voltage: 250
+#      current: 20
+#      frequency: 51.5
+#
+#component:
+#  anomaly:
+#    threshold:
+#      voltage: 250
+#      current: 20
+#      frequency: 51.5
+
+
 server:
   port: 8081
 
 spring:
   kafka:
-    bootstrap-servers: kafka-broker:9092
+    bootstrap-servers: localhost:29092,localhost:29093,localhost:29094
     consumer:
       group-id: grid-monitor-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      properties:
-        spring.json.trusted.packages: '*'
 
 kafka:
-  topic:
-    current-measurements: current-measurements
+  topics:
+    line-measurements: line-measurements
+    switch-measurements: switch-measurements
+
+
+
+config:
+  anomaly:
+    threshold:
+      voltage: 250
+      current: 20
+      frequency: 51.5
+
+component:
+  anomaly:
+    threshold:
+       voltage: 250
+       current: 20
+       frequency: 51.5
+

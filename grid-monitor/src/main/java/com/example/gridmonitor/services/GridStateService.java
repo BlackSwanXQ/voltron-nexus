@@ -24,6 +24,7 @@ public class GridStateService {
     }
 
     public void updateState(Map<String, Double> measurements) {
+//        System.out.println("MEASUREMENS: " + measurements);
         // ВАЖНО: проверяем на null и пустоту
         if (measurements == null || measurements.isEmpty()) {
             log.warn("⚠️ Получены пустые или null измерения");
@@ -32,25 +33,25 @@ public class GridStateService {
 
         try {
             measurements.forEach((key, value) -> {
-                if (key.startsWith("L")) {
-                    LineCurrent line = new LineCurrent();
-                    line.setLineId(key);
-                    line.setCurrentAmperes(value);
-                    line.setTimestamp(Instant.now());
-                    currentState.getLineStates().put(key, line);
-                } else if (key.startsWith("c")) {
-                    SwitchCurrent switchCurrent = new SwitchCurrent();
-                    switchCurrent.setSwitchId(key);
-                    switchCurrent.setCurrentAmperes(value);
-                    switchCurrent.setTimestamp(Instant.now());
-                    currentState.getSwitchStates().put(key, switchCurrent);
-                } else {
-                    log.warn("⚠️ Неизвестный ключ измерения: {}", key);
-                }
+//                if (key.startsWith("L")) {
+//                    LineCurrent line = new LineCurrent();
+//                    line.setLineId(key);
+//                    line.setCurrentAmperes(value);
+//                    line.setTimestamp(Instant.now());
+//                    currentState.getLineStates().put(key, line);
+//                } else if (key.startsWith("c")) {
+                SwitchCurrent switchCurrent = new SwitchCurrent();
+                switchCurrent.setSwitchId(key);
+                switchCurrent.setCurrentAmperes(value);
+                switchCurrent.setTimestamp(Instant.now());
+                currentState.getSwitchStates().put(key, switchCurrent);
+//                } else {
+//                    log.warn("⚠️ Неизвестный ключ измерения: {}", key);
+//                }
             });
-            log.info("✅ Состояние сети обновлено. Линий: {}, Выключателей: {}",
-                    currentState.getLineStates().size(),
-                    currentState.getSwitchStates().size());
+//            log.info("✅ Состояние сети обновлено. Линий: {}, Выключателей: {}",
+//                    currentState.getLineStates().size(),
+//                    currentState.getSwitchStates().size());
 
         } catch (Exception e) {
             log.error("❌ Ошибка при обновлении состояния: {}", e.getMessage());
@@ -62,6 +63,7 @@ public class GridStateService {
     }
 
     public SwitchCurrent getSwitchCurrent(String switchId) {
+
         return currentState.getSwitchStates().get(switchId);
     }
 }
