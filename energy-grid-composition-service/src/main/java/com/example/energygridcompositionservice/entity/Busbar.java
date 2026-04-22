@@ -3,6 +3,9 @@ package com.example.energygridcompositionservice.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Entity
 public class Busbar extends ConnectedElement {
     @Column(name = "voltage")
@@ -12,9 +15,15 @@ public class Busbar extends ConnectedElement {
         super(name);
     }
 
-    public Busbar() {}
+    public Busbar() {
+    }
 
-    public double getVoltage() { return voltage; }
+    public double getVoltage() {
+        return voltage;
+    }
+
     public void setVoltage(double voltage) {
-        this.voltage = voltage; }
+        this.voltage = voltage;
+    }
+
 }

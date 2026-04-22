@@ -30,7 +30,6 @@ public class EnergyGridController {
 //        response.put("message", "Данные успешно получены");
 //        response.put("status", "success");
 //        return ResponseEntity.ok(response);
-
         return ResponseEntity.ok(energyGridService.save(electricalSchemeDto));
     }
 }

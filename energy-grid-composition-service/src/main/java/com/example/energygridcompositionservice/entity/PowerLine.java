@@ -2,14 +2,18 @@ package com.example.energygridcompositionservice.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "power_lines")
 public class PowerLine extends ConnectedElement {
+
     @Column(name = "voltage")
     private double voltage;
 
     @Column(name = "length")
     private double length;
+
 
     public PowerLine(String name) {
         super(name);
